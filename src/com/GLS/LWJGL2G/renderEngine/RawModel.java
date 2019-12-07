@@ -2,7 +2,7 @@ package com.GLS.LWJGL2G.renderEngine;
 
 public class RawModel {
 	
-	int vaoID, vertexCount;
+	private int vaoID, vertexCount;
 
 	public RawModel(int vaoID, int vertexCount) {
 		this.vaoID = vaoID;

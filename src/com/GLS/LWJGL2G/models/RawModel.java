@@ -1,4 +1,4 @@
-package com.GLS.LWJGL2G.renderEngine;
+package com.GLS.LWJGL2G.models;
 
 public class RawModel {
 	

@@ -11,6 +11,7 @@ import com.GLS.LWJGL2G.entities.Entity;
 import com.GLS.LWJGL2G.models.RawModel;
 import com.GLS.LWJGL2G.models.TexturedModel;
 import com.GLS.LWJGL2G.shaders.StaticShader;
+import com.GLS.LWJGL2G.textures.ModelTexture;
 import com.GLS.LWJGL2G.toolbox.Maths;
 
 public class Renderer {
@@ -42,13 +43,17 @@ public class Renderer {
 		GL30.glBindVertexArray(model.getVaoID());
 		GL20.glEnableVertexAttribArray(0);
 		GL20.glEnableVertexAttribArray(1);
+		GL20.glEnableVertexAttribArray(2);
 		Matrix4f transformationMatrix = Maths.createTransformationMatrix(entity.getPosition(), entity.getRx(), entity.getRy(), entity.getRz(), entity.getS());
 		shader.loadTransformationMatrix(transformationMatrix);
+		ModelTexture texture = texturedModel.getTexture();
+		shader.loadShineValues(texture.getShineDamper(), texture.getReflectivity());
 		GL13.glActiveTexture(GL13.GL_TEXTURE0);
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, texturedModel.getTexture().getID());
 		GL11.glDrawElements(GL11.GL_TRIANGLES, model.getVertexCount(), GL11.GL_UNSIGNED_INT, 0);
 		GL20.glDisableVertexAttribArray(0);
 		GL20.glDisableVertexAttribArray(1);
+		GL20.glDisableVertexAttribArray(2);
 		GL30.glBindVertexArray(0);
 	}
 	

@@ -70,7 +70,7 @@ public class OBJLoader {
 			verticesArray[pointer++] = vertex.z;
 		}
 		for(int i = 0; i < indices.size(); i++) indicesArray[i] = indices.get(i);
-		return loader.loadToVAO(verticesArray, textureArray, indicesArray);
+		return loader.loadToVAO(verticesArray, textureArray, normalsArray, indicesArray);
 	}
 	
 	private static void processVertex(String[] vertexData, ArrayList<Integer> indices, ArrayList<Vector2f> textures, ArrayList<Vector3f> normals, float[] textureArray, float[] normalsArray) {

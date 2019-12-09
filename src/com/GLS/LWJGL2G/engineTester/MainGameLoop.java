@@ -16,16 +16,20 @@ public class MainGameLoop {
 		Loader loader = new Loader();
 		StaticShader shader = new StaticShader();
 		Renderer renderer = new Renderer(shader);
-		RawModel model = OBJLoader.loadObjModel("stall", loader);
-		ModelTexture texture = new ModelTexture(loader.loadTexture("stallTexture"));
+		RawModel model = OBJLoader.loadObjModel("dragon", loader);
+		ModelTexture texture = new ModelTexture(loader.loadTexture("dragonTexture"));
+		texture.setShineDamper(10);
+		texture.setReflectivity(1);
 		TexturedModel texturedModel = new TexturedModel(model,texture);
 		Camera camera = new Camera();
-		Entity entity = new Entity(texturedModel,new Vector3f(0,0,-50f),0,0,0,1f);
+		Entity entity = new Entity(texturedModel,new Vector3f(0,0,-25f),0,0,0,1f);
+		Light light = new Light(new Vector3f(0,0,-20),new Vector3f(1,1,1));
 		while(!Display.isCloseRequested()) {
 			entity.increaseRotation(0, 1, 0);
 			camera.move();
 			renderer.prepare();
 			shader.start();
+			shader.loadLight(light);
 			shader.loadViewMatrix(camera);
 			renderer.render(entity);
 			shader.stop();

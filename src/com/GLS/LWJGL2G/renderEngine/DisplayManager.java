@@ -28,7 +28,6 @@ public class DisplayManager {
 	}
 	
 	public void updateDisplay() {
-		Display.sync(120);
 		Display.update();
 	}
 	

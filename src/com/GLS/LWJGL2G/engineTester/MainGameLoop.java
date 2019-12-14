@@ -31,7 +31,7 @@ public class MainGameLoop {
 		int frames = 0;
 		long ns = 1000000000;
 		int fps = 1;
-		long cap = (long) (((float)1/(float)120)*ns);
+		long cap = ns/120;
 		System.out.println(cap);
 		while(!Display.isCloseRequested()) {
 	        if(cap/delta2>=1) {

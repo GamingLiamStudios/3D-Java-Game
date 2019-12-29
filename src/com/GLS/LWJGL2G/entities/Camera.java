@@ -16,6 +16,10 @@ public class Camera {
 		if(Keyboard.isKeyDown(Keyboard.KEY_D)) position.x+=speed;
 		if(Keyboard.isKeyDown(Keyboard.KEY_LCONTROL)) position.y-=speed;
 		if(Keyboard.isKeyDown(Keyboard.KEY_SPACE)) position.y+=speed;
+		if(Keyboard.isKeyDown(Keyboard.KEY_LEFT)) yaw-=.5f;
+		if(Keyboard.isKeyDown(Keyboard.KEY_RIGHT)) yaw+=.5f;
+		if(Keyboard.isKeyDown(Keyboard.KEY_UP)) pitch-=.5f;
+		if(Keyboard.isKeyDown(Keyboard.KEY_DOWN)) pitch+=.5f;
 	}
 
 	public Vector3f getPosition() {
